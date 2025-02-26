@@ -29,19 +29,16 @@ warnings.simplefilter(action='ignore', category=Warning)
 
 from google.colab import files
 
-# kaggle.json dosyasını yükle
 files.upload()
 
-# Kaggle API anahtarını doğru dizine taşı
 !mkdir -p ~/.kaggle
 !mv kaggle.json ~/.kaggle/
-!chmod 600 ~/.kaggle/kaggle.json  # Güvenlik için izinleri ayarla
+!chmod 600 ~/.kaggle/kaggle.json 
 
 !kaggle datasets download mlg-ulb/creditcardfraud
 
 import zipfile
 
-# İndirilen zip dosyasını aç
 with zipfile.ZipFile("/content/creditcardfraud.zip", "r") as zip_ref:
     zip_ref.extractall("credit_data")  # ev_data adlı klasöre çıkart
 
